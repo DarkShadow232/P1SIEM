@@ -20,7 +20,7 @@ const Footer = () => {
                 className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
               />
               <span className="text-lg sm:text-xl font-bold text-white">
-                SIEM<span className="text-[#8c52ff]">.</span>AI
+                SIEM
               </span>
             </div>
             <p className="text-sm sm:text-base text-[#d9d9d9]/60 max-w-sm">

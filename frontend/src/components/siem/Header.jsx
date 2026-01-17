@@ -70,7 +70,7 @@ const Header = () => {
               />
             </div>
             <span className="text-base sm:text-lg lg:text-xl font-bold text-white tracking-tight">
-              SIEM<span className="text-[#8c52ff]">.</span>AI
+              SIEM
             </span>
           </div>
 
