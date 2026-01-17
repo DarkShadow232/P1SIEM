@@ -118,7 +118,7 @@ const Hero = () => {
         {/* Badge */}
         <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#8c52ff]/10 border border-[#8c52ff]/30 rounded-full mb-6 sm:mb-8">
           <Cpu className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#8c52ff]" />
-          <span className="text-xs sm:text-sm text-[#d9d9d9]">Enterprise-Grade Security Intelligence</span>
+          <span className="text-xs sm:text-sm text-[#d9d9d9]">Less noise, more security</span>
         </div>
 
         {/* Main Headline */}

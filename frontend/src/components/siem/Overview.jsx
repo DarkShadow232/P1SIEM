@@ -51,7 +51,7 @@ const Overview = () => {
             Overview
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 px-2">
-            Advanced Security Intelligence
+            Purpose-Built Security Intelligence
           </h2>
         </div>
 
@@ -64,15 +64,10 @@ const Overview = () => {
             }`}
           >
             <p className="text-sm sm:text-base md:text-lg text-[#d9d9d9]/80 leading-relaxed mb-4 sm:mb-6">
-              This enterprise-grade SIEM solution leverages state-of-the-art machine learning
-              algorithms to detect network anomalies and classify security threats in real-time.
-              Built for scalability and precision, it provides comprehensive protection against
-              known and unknown attack patterns.
+              Our solution addresses the limitations of traditional SIEM platforms offered by well-known vendors like IBM and Microsoft, which rely on one generic template for many businesses. In contrast, the large vendors make one template that fits a lot of businesses — we make the opposite, which makes us more customized and makes the solution on point.
             </p>
             <p className="text-sm sm:text-base md:text-lg text-[#d9d9d9]/80 leading-relaxed">
-              The system implements <span className="text-[#8c52ff] font-semibold">5 different AI/ML models</span> for
-              multi-layered security analysis, with One-Class SVM as the primary detection engine —
-              specifically chosen for its ability to detect zero-day threats without requiring labeled attack data.
+              Our solution leverages <span className="text-[#8c52ff] font-semibold">state-of-the-art machine learning algorithms</span> to detect network anomalies and classify security threats in real time. Built for scalability and precision, it delivers comprehensive protection against both known and unknown attack patterns.
             </p>
 
             {/* Feature Highlights */}
