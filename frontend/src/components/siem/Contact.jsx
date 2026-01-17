@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { projectLinksData } from '../../data/mockData';
-import { Github, ExternalLink, FileText, ArrowRight, Mail } from 'lucide-react';
+import { ExternalLink, FileText, ArrowRight, Mail } from 'lucide-react';
 
 const iconMap = {
-  Github,
   ExternalLink,
   FileText
 };
