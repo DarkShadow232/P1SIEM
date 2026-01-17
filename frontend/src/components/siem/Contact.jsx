@@ -100,9 +100,11 @@ const Contact = () => {
           <div className="flex justify-center mb-8">
             <div className="relative">
               <div className="absolute inset-0 bg-[#8c52ff]/20 blur-3xl rounded-full scale-150" />
-              <div className="relative p-6 border-2 border-[#8c52ff]/40 bg-[#0a0e27]/80 backdrop-blur-sm">
-                <Shield className="w-16 h-16 text-[#8c52ff]" />
-              </div>
+              <img 
+                src="https://customer-assets.emergentagent.com/job_siemshield/artifacts/octpbb5h_siem-logo.png" 
+                alt="SIEM Security" 
+                className="relative w-24 h-24 object-contain drop-shadow-[0_0_20px_rgba(140,82,255,0.5)]"
+              />
             </div>
           </div>
 

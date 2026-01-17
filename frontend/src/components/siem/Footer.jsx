@@ -14,7 +14,11 @@ const Footer = () => {
           {/* Brand Column */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <Shield className="w-8 h-8 text-[#8c52ff]" />
+              <img 
+                src="https://customer-assets.emergentagent.com/job_siemshield/artifacts/octpbb5h_siem-logo.png" 
+                alt="SIEM Logo" 
+                className="w-10 h-10 object-contain"
+              />
               <span className="text-xl font-bold text-white">
                 SIEM<span className="text-[#8c52ff]">.</span>AI
               </span>
