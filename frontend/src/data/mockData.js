@@ -225,65 +225,98 @@ export const projectLinksData = [
 ];
 
 export const visualizationsData = [
+  // Dashboard
   { 
     id: 1, 
-    title: 'Dataset Size Comparison', 
-    category: 'Analysis',
-    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/qdlw0519_chart_size_comparison.png'
+    title: 'SIEM Alert Dashboard', 
+    category: 'Dashboard',
+    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/dl0537nl_siem_alert_dashboard.png'
   },
+  // Confusion Matrices
   { 
     id: 2, 
-    title: 'Anomaly Detection Results', 
-    category: 'Analysis',
-    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/uzqua5ic_anomaly_detection_results.png'
+    title: 'Multi-Class Confusion Matrix', 
+    category: 'Models',
+    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/89he1ff5_multiclass_confusion.jpg'
   },
   { 
     id: 3, 
-    title: 'Distribution Comparison', 
-    category: 'Analysis',
-    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/lijfrmfl_chart_distribution_comparison.png'
+    title: 'One-Class SVM Confusion Matrix', 
+    category: 'Models',
+    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/i2gapj3f_ocsvm_confusion_matrix.jpg'
   },
   { 
     id: 4, 
-    title: 'Mean Values Comparison', 
-    category: 'Analysis',
-    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/94wlhznd_chart_mean_comparison.png'
-  },
-  { 
-    id: 5, 
-    title: 'Percentage Change Analysis', 
-    category: 'Analysis',
-    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/b511azqu_chart_pct_change.png'
-  },
-  { 
-    id: 6, 
-    title: 'Confusion Matrix', 
+    title: 'XGBoost Binary Confusion Matrix', 
     category: 'Models',
     imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/1h83kfxj_confusion_matrix.png'
   },
   { 
-    id: 7, 
-    title: 'Feature Importance Analysis', 
-    category: 'Analysis',
-    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/f8e2rbeg_feature_importance.png'
-  },
-  { 
-    id: 8, 
-    title: 'Feature-wise Outlier Detection', 
-    category: 'Analysis',
-    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/0zvz5in5_feature_wise_outliers.png'
-  },
-  { 
-    id: 9, 
+    id: 5, 
     title: 'GMM Confusion Matrix', 
     category: 'Models',
     imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/62dmwzbf_gmm_confusion.png'
   },
   { 
-    id: 10, 
+    id: 6, 
     title: 'Isolation Forest Confusion Matrix', 
     category: 'Models',
     imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/q5yi0duw_isolation_forest_confusion.jpg'
+  },
+  // Analysis
+  { 
+    id: 7, 
+    title: 'Anomaly Detection Results', 
+    category: 'Analysis',
+    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/uzqua5ic_anomaly_detection_results.png'
+  },
+  { 
+    id: 8, 
+    title: 'Normal vs Anomaly Comparison', 
+    category: 'Analysis',
+    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/9xdgkxic_normal_vs_anomaly_comparison.png'
+  },
+  { 
+    id: 9, 
+    title: 'Feature Importance Analysis', 
+    category: 'Analysis',
+    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/f8e2rbeg_feature_importance.png'
+  },
+  { 
+    id: 10, 
+    title: 'Feature-wise Outlier Detection', 
+    category: 'Analysis',
+    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/0zvz5in5_feature_wise_outliers.png'
+  },
+  { 
+    id: 11, 
+    title: 'Outlier Detection Analysis', 
+    category: 'Analysis',
+    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/ejdlp7i4_outlier_detection_analysis.png'
+  },
+  { 
+    id: 12, 
+    title: 'Distribution Comparison', 
+    category: 'Analysis',
+    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/lijfrmfl_chart_distribution_comparison.png'
+  },
+  { 
+    id: 13, 
+    title: 'Dataset Size Comparison', 
+    category: 'Analysis',
+    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/qdlw0519_chart_size_comparison.png'
+  },
+  { 
+    id: 14, 
+    title: 'Mean Values Comparison', 
+    category: 'Analysis',
+    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/94wlhznd_chart_mean_comparison.png'
+  },
+  { 
+    id: 15, 
+    title: 'Percentage Change Analysis', 
+    category: 'Analysis',
+    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/b511azqu_chart_pct_change.png'
   }
 ];
 
