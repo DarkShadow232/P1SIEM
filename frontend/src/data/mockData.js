@@ -227,7 +227,7 @@ export const projectLinksData = [
     description: 'Read Full Docs',
     detail: 'Complete implementation guide',
     icon: 'FileText',
-    url: '#'
+    url: 'https://qms-docs.netlify.app'
   }
 ];
 
