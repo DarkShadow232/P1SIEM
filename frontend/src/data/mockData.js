@@ -249,6 +249,5 @@ export const navLinksData = [
   { id: 'dashboard', label: 'Dashboard' },
   { id: 'methodology', label: 'Methodology' },
   { id: 'results', label: 'Results' },
-  { id: 'tech-stack', label: 'Tech Stack' },
-  { id: 'contact', label: 'Contact' }
+  { id: 'tech-stack', label: 'Tech Stack' }
 ];
