@@ -6,6 +6,7 @@ const Visualizations = () => {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [activeCategory, setActiveCategory] = useState('All');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -24,6 +25,14 @@ const Visualizations = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Get unique categories
+  const categories = ['All', ...new Set(visualizationsData.map(v => v.category))];
+
+  // Filter visualizations by category
+  const filteredVisualizations = activeCategory === 'All'
+    ? visualizationsData
+    : visualizationsData.filter(v => v.category === activeCategory);
+
   const openLightbox = (index) => {
     setSelectedImage(index);
     document.body.style.overflow = 'hidden';
@@ -36,7 +45,7 @@ const Visualizations = () => {
 
   const navigateLightbox = (direction) => {
     const newIndex = selectedImage + direction;
-    if (newIndex >= 0 && newIndex < visualizationsData.length) {
+    if (newIndex >= 0 && newIndex < filteredVisualizations.length) {
       setSelectedImage(newIndex);
     }
   };
@@ -77,19 +86,43 @@ const Visualizations = () => {
           </p>
         </div>
 
+        {/* Category Filters */}
+        <div
+          className={`flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 md:mb-12 transition-all duration-700 delay-100 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`px-4 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-medium transition-all duration-300 ${
+                activeCategory === category
+                  ? 'bg-[#8c52ff] text-white'
+                  : 'bg-[#121212] text-[#d9d9d9]/70 border border-[#8c52ff]/20 hover:border-[#8c52ff]/50 hover:text-white'
+              }`}
+            >
+              {category}
+              <span className="ml-2 text-xs opacity-70">
+                ({category === 'All' ? visualizationsData.length : visualizationsData.filter(v => v.category === category).length})
+              </span>
+            </button>
+          ))}
+        </div>
+
         {/* Visualizations Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
-          {visualizationsData.map((viz, index) => (
+          {filteredVisualizations.map((viz, index) => (
             <div
               key={viz.id}
               className={`group relative bg-[#121212] border border-[#8c52ff]/10 hover:border-[#8c52ff]/40 overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-2 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
+              style={{ transitionDelay: `${Math.min(index * 50, 300)}ms` }}
               onClick={() => openLightbox(index)}
             >
               {/* Image */}
-              <div className="aspect-[4/3] overflow-hidden">
+              <div className="aspect-[4/3] overflow-hidden bg-[#0a0e27]">
                 <img
                   src={viz.imageUrl}
                   alt={viz.title}
@@ -98,17 +131,17 @@ const Visualizations = () => {
                 />
               </div>
 
-              {/* Overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e27] via-[#0a0e27]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                <div className="p-4 w-full">
-                  <span className="text-[10px] sm:text-xs text-[#8c52ff] mb-1 block">{viz.category}</span>
-                  <span className="text-sm sm:text-base text-white font-medium">{viz.title}</span>
+              {/* Info bar at bottom */}
+              <div className="p-3 sm:p-4 bg-[#121212] border-t border-[#8c52ff]/10">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="min-w-0">
+                    <span className="text-[10px] sm:text-xs text-[#8c52ff] block mb-0.5">{viz.category}</span>
+                    <span className="text-xs sm:text-sm text-white font-medium truncate block">{viz.title}</span>
+                  </div>
+                  <div className="w-8 h-8 bg-[#8c52ff]/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex-shrink-0">
+                    <ZoomIn className="w-4 h-4 text-[#8c52ff]" />
+                  </div>
                 </div>
-              </div>
-
-              {/* Zoom icon */}
-              <div className="absolute top-3 right-3 w-8 h-8 bg-[#8c52ff]/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <ZoomIn className="w-4 h-4 text-white" />
               </div>
 
               {/* Corner Accent */}
@@ -118,6 +151,15 @@ const Visualizations = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Results count */}
+        <div
+          className={`text-center mt-8 text-sm text-[#d9d9d9]/50 transition-all duration-700 ${
+            isVisible ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          Showing {filteredVisualizations.length} of {visualizationsData.length} visualizations
         </div>
       </div>
 
@@ -145,7 +187,7 @@ const Visualizations = () => {
               <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </button>
           )}
-          {selectedImage < visualizationsData.length - 1 && (
+          {selectedImage < filteredVisualizations.length - 1 && (
             <button
               onClick={(e) => { e.stopPropagation(); navigateLightbox(1); }}
               className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 transition-colors"
@@ -163,8 +205,8 @@ const Visualizations = () => {
             {/* Image */}
             <div className="bg-[#0a0e27] p-2 sm:p-4">
               <img
-                src={visualizationsData[selectedImage]?.imageUrl}
-                alt={visualizationsData[selectedImage]?.title}
+                src={filteredVisualizations[selectedImage]?.imageUrl}
+                alt={filteredVisualizations[selectedImage]?.title}
                 className="w-full h-auto max-h-[70vh] object-contain"
               />
             </div>
@@ -173,14 +215,14 @@ const Visualizations = () => {
             <div className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-t border-[#8c52ff]/10">
               <div>
                 <span className="text-[10px] sm:text-xs text-[#8c52ff] mb-0.5 sm:mb-1 block">
-                  {visualizationsData[selectedImage]?.category}
+                  {filteredVisualizations[selectedImage]?.category}
                 </span>
                 <h3 className="text-base sm:text-lg md:text-xl font-bold text-white">
-                  {visualizationsData[selectedImage]?.title}
+                  {filteredVisualizations[selectedImage]?.title}
                 </h3>
               </div>
               <div className="text-xs sm:text-sm text-[#d9d9d9]/50">
-                {selectedImage + 1} / {visualizationsData.length}
+                {selectedImage + 1} / {filteredVisualizations.length}
               </div>
             </div>
           </div>
