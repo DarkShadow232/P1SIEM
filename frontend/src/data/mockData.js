@@ -60,7 +60,7 @@ export const aiModelsData = [
     accuracy: 94.2,
     bestFor: 'Unknown attacks, Zero-day threats',
     status: 'Production-Ready (SIEM Integrated)',
-    description: 'Trains only on normal traffic, detects any deviation',
+    description: 'One-Class SVM serves as the primary detection engine, trained exclusively on normal network traffic patterns. It creates a decision boundary that encapsulates legitimate behavior, flagging any deviation as a potential threat. This approach is particularly powerful for detecting zero-day attacks and previously unknown threat vectors without requiring labeled attack data for training.',
     isPrimary: true,
     icon: 'Star'
   },
@@ -71,7 +71,7 @@ export const aiModelsData = [
     accuracy: 98.1,
     bestFor: 'Specific attack type identification',
     status: 'Active',
-    description: 'Identifies and classifies specific attack types',
+    description: 'XGBoost Multi-Class classifier excels at categorizing detected anomalies into specific attack types such as DDoS, port scanning, brute force, and data exfiltration. Using gradient boosting with decision trees, it provides detailed threat classification that enables security teams to prioritize responses and implement targeted countermeasures.',
     isPrimary: false,
     icon: 'Layers'
   },
@@ -82,7 +82,7 @@ export const aiModelsData = [
     accuracy: 96.5,
     bestFor: 'High-accuracy normal/anomaly detection',
     status: 'Active',
-    description: 'Binary classification with feature insights',
+    description: 'XGBoost Binary provides a robust secondary validation layer, distinguishing between normal and anomalous traffic with exceptional precision. It includes built-in feature importance analysis, helping security analysts understand which network attributes most strongly indicate malicious activity, enabling continuous improvement of detection rules.',
     isPrimary: false,
     icon: 'Binary'
   },
@@ -93,7 +93,7 @@ export const aiModelsData = [
     accuracy: 91.8,
     bestFor: 'Fast outlier detection',
     status: 'Active',
-    description: 'Tree-based rapid anomaly isolation',
+    description: 'Isolation Forest uses a tree-based approach to rapidly isolate anomalies by randomly selecting features and split values. Anomalies, being rare and different, require fewer splits to isolate. This makes it highly efficient for real-time processing of high-volume network traffic, providing quick initial screening before deeper analysis.',
     isPrimary: false,
     icon: 'TreeDeciduous'
   },
@@ -104,7 +104,7 @@ export const aiModelsData = [
     accuracy: 92.3,
     bestFor: 'Probabilistic anomaly detection',
     status: 'Active',
-    description: 'Probabilistic clustering approach',
+    description: 'GMM models network traffic as a mixture of Gaussian distributions, assigning probability scores to each data point. This probabilistic approach provides nuanced anomaly scoring rather than binary classification, allowing security teams to set custom thresholds based on risk tolerance and prioritize investigation of the most statistically unusual events.',
     isPrimary: false,
     icon: 'Sigma'
   }
