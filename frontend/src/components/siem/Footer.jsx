@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Twitter, Mail, ArrowUp } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -10,9 +10,9 @@ const Footer = () => {
     <footer className="relative bg-[#121212] border-t border-[#8c52ff]/10">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16">
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
           {/* Brand Column */}
-          <div className="sm:col-span-2">
+          <div>
             <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
               <img 
                 src="https://customer-assets.emergentagent.com/job_siemshield/artifacts/octpbb5h_siem-logo.png" 
@@ -23,27 +23,10 @@ const Footer = () => {
                 SIEM<span className="text-[#8c52ff]">.</span>AI
               </span>
             </div>
-            <p className="text-sm sm:text-base text-[#d9d9d9]/60 mb-4 sm:mb-6 max-w-sm">
-              Enterprise-grade SIEM solution with AI-powered anomaly detection.
+            <p className="text-sm sm:text-base text-[#d9d9d9]/60 max-w-sm">
+              Purpose-built SIEM solution with AI-powered anomaly detection.
               Protecting networks with cutting-edge machine learning technology.
             </p>
-            <div className="flex gap-3 sm:gap-4">
-              {[
-                { icon: Github, label: 'GitHub' },
-                { icon: Linkedin, label: 'LinkedIn' },
-                { icon: Twitter, label: 'Twitter' },
-                { icon: Mail, label: 'Email' }
-              ].map(({ icon: Icon, label }, index) => (
-                <a
-                  key={index}
-                  href="#"
-                  aria-label={label}
-                  className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-[#0a0e27] border border-[#8c52ff]/10 hover:border-[#8c52ff]/50 hover:bg-[#8c52ff]/10 transition-all duration-300"
-                >
-                  <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-[#d9d9d9]/70 hover:text-[#8c52ff]" />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -67,13 +50,20 @@ const Footer = () => {
           <div>
             <h4 className="text-sm sm:text-base text-white font-semibold mb-3 sm:mb-4">Resources</h4>
             <ul className="space-y-2 sm:space-y-3">
-              {['Documentation', 'GitHub Repository', 'Live Demo', 'API Reference', 'Contact Us'].map((item, index) => (
+              {[
+                { name: 'Documentation', url: 'https://qms-docs.netlify.app' },
+                { name: 'GitHub Repository', url: '#' },
+                { name: 'Live Demo', url: '#' },
+                { name: 'API Reference', url: '#' }
+              ].map((item, index) => (
                 <li key={index}>
                   <a
-                    href="#"
+                    href={item.url}
                     className="text-sm text-[#d9d9d9]/60 hover:text-[#8c52ff] transition-colors"
+                    target={item.url.startsWith('http') ? '_blank' : '_self'}
+                    rel={item.url.startsWith('http') ? 'noopener noreferrer' : ''}
                   >
-                    {item}
+                    {item.name}
                   </a>
                 </li>
               ))}
