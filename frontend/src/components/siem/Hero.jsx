@@ -102,11 +102,12 @@ const Hero = () => {
         <div className="mb-8 flex justify-center">
           <div className="relative group">
             <div className="absolute inset-0 bg-[#8c52ff]/30 blur-3xl rounded-full scale-150 opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
-            <div className="relative p-6 border-2 border-[#8c52ff]/40 rounded-2xl bg-[#0a0e27]/60 backdrop-blur-sm">
-              <Shield className="w-24 h-24 text-[#8c52ff] animate-pulse" />
-              <div className="absolute -top-2 -right-2">
-                <Eye className="w-6 h-6 text-[#8e50ec]" />
-              </div>
+            <div className="relative">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_siemshield/artifacts/octpbb5h_siem-logo.png" 
+                alt="SIEM Security Logo" 
+                className="w-40 h-40 object-contain drop-shadow-[0_0_30px_rgba(140,82,255,0.5)]"
+              />
             </div>
           </div>
         </div>

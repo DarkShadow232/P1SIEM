@@ -53,8 +53,11 @@ const Header = () => {
             onClick={() => scrollToSection('hero')}
           >
             <div className="relative">
-              <Shield className="w-10 h-10 text-[#8c52ff] transition-all duration-300 group-hover:text-[#8e50ec]" />
-              <div className="absolute inset-0 bg-[#8c52ff]/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <img 
+                src="https://customer-assets.emergentagent.com/job_siemshield/artifacts/octpbb5h_siem-logo.png" 
+                alt="SIEM Logo" 
+                className="h-12 w-12 object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_15px_rgba(140,82,255,0.6)]"
+              />
             </div>
             <span className="text-xl font-bold text-white tracking-tight">
               SIEM<span className="text-[#8c52ff]">.</span>AI
