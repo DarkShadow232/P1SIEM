@@ -209,25 +209,18 @@ export const techStackData = {
 
 export const projectLinksData = [
   {
-    title: 'GitHub Repository',
-    description: 'View Source Code',
-    detail: 'Complete codebase with documentation',
-    icon: 'Github',
-    url: '#'
-  },
-  {
     title: 'Live Dashboard Demo',
     description: 'Try Interactive Demo',
     detail: 'Experience the real-time interface',
     icon: 'ExternalLink',
-    url: '#'
+    url: 'https://drive.google.com/file/d/1cYbipM4TDjMiBVwnWtOiV1lphqofg9Ht/view?usp=sharing'
   },
   {
     title: 'Documentation',
     description: 'Read Full Docs',
     detail: 'Complete implementation guide',
     icon: 'FileText',
-    url: 'https://qms-docs.netlify.app'
+    url: 'https://qms.sut.edu.eg/web/projects/view/117'
   }
 ];
 
