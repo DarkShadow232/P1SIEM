@@ -254,6 +254,36 @@ export const visualizationsData = [
     title: 'Percentage Change Analysis', 
     category: 'Analysis',
     imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/b511azqu_chart_pct_change.png'
+  },
+  { 
+    id: 6, 
+    title: 'Confusion Matrix', 
+    category: 'Models',
+    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/1h83kfxj_confusion_matrix.png'
+  },
+  { 
+    id: 7, 
+    title: 'Feature Importance Analysis', 
+    category: 'Analysis',
+    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/f8e2rbeg_feature_importance.png'
+  },
+  { 
+    id: 8, 
+    title: 'Feature-wise Outlier Detection', 
+    category: 'Analysis',
+    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/0zvz5in5_feature_wise_outliers.png'
+  },
+  { 
+    id: 9, 
+    title: 'GMM Confusion Matrix', 
+    category: 'Models',
+    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/62dmwzbf_gmm_confusion.png'
+  },
+  { 
+    id: 10, 
+    title: 'Isolation Forest Confusion Matrix', 
+    category: 'Models',
+    imageUrl: 'https://customer-assets.emergentagent.com/job_siemshield/artifacts/q5yi0duw_isolation_forest_confusion.jpg'
   }
 ];
 
