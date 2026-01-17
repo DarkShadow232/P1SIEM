@@ -1,18 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { visualizationsData } from '../../data/mockData';
-import { X, ChevronLeft, ChevronRight, Image, Grid, BarChart2, PieChart } from 'lucide-react';
-
-const categoryIcons = {
-  Dashboard: Grid,
-  Analysis: BarChart2,
-  Models: PieChart
-};
+import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 
 const Visualizations = () => {
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
-  const [activeCategory, setActiveCategory] = useState('All');
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -31,12 +24,6 @@ const Visualizations = () => {
     return () => observer.disconnect();
   }, []);
 
-  const categories = ['All', ...new Set(visualizationsData.map(v => v.category))];
-
-  const filteredVisualizations = activeCategory === 'All'
-    ? visualizationsData
-    : visualizationsData.filter(v => v.category === activeCategory);
-
   const openLightbox = (index) => {
     setSelectedImage(index);
     document.body.style.overflow = 'hidden';
@@ -49,7 +36,7 @@ const Visualizations = () => {
 
   const navigateLightbox = (direction) => {
     const newIndex = selectedImage + direction;
-    if (newIndex >= 0 && newIndex < filteredVisualizations.length) {
+    if (newIndex >= 0 && newIndex < visualizationsData.length) {
       setSelectedImage(newIndex);
     }
   };
@@ -90,74 +77,54 @@ const Visualizations = () => {
           </p>
         </div>
 
-        {/* Category Filters */}
-        <div
-          className={`flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 md:mb-12 transition-all duration-700 delay-200 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}
-        >
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-medium transition-all duration-300 min-h-[40px] ${
-                activeCategory === category
-                  ? 'bg-[#8c52ff] text-white'
-                  : 'bg-[#121212] text-[#d9d9d9]/70 border border-[#8c52ff]/10 hover:border-[#8c52ff]/40 hover:text-white'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
         {/* Visualizations Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-          {filteredVisualizations.map((viz, index) => {
-            const CategoryIcon = categoryIcons[viz.category] || Image;
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
+          {visualizationsData.map((viz, index) => (
+            <div
+              key={viz.id}
+              className={`group relative bg-[#121212] border border-[#8c52ff]/10 hover:border-[#8c52ff]/40 overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-2 ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
+              onClick={() => openLightbox(index)}
+            >
+              {/* Image */}
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src={viz.imageUrl}
+                  alt={viz.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
 
-            return (
-              <div
-                key={viz.id}
-                className={`group relative aspect-[4/3] bg-[#121212] border border-[#8c52ff]/10 hover:border-[#8c52ff]/40 overflow-hidden cursor-pointer transition-all duration-500 hover:-translate-y-2 ${
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}
-                style={{ transitionDelay: `${index * 100}ms` }}
-                onClick={() => openLightbox(index)}
-              >
-                {/* Placeholder Content */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-3 sm:p-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 flex items-center justify-center bg-[#8c52ff]/10 border border-[#8c52ff]/20 mb-2 sm:mb-3 md:mb-4 group-hover:bg-[#8c52ff]/20 transition-colors">
-                    <CategoryIcon className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 text-[#8c52ff]/70 group-hover:text-[#8c52ff] transition-colors" />
-                  </div>
-                  <p className="text-[10px] sm:text-xs md:text-sm text-[#d9d9d9]/70 text-center group-hover:text-white transition-colors line-clamp-2">
-                    {viz.title}
-                  </p>
-                </div>
-
-                {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e27]/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-2 sm:bottom-3 md:bottom-4 left-2 sm:left-3 md:left-4 right-2 sm:right-3 md:right-4">
-                    <span className="text-[10px] sm:text-xs text-[#8c52ff] mb-0.5 sm:mb-1 block">{viz.category}</span>
-                    <span className="text-xs sm:text-sm text-white font-medium line-clamp-1">{viz.title}</span>
-                  </div>
-                </div>
-
-                {/* Corner Accent */}
-                <div className="absolute top-0 right-0 w-6 h-6 sm:w-8 sm:h-8 overflow-hidden">
-                  <div className="absolute top-0 right-0 w-px h-3 sm:h-4 bg-[#8c52ff]/30 group-hover:h-4 sm:group-hover:h-6 transition-all" />
-                  <div className="absolute top-0 right-0 h-px w-3 sm:w-4 bg-[#8c52ff]/30 group-hover:w-4 sm:group-hover:w-6 transition-all" />
+              {/* Overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e27] via-[#0a0e27]/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                <div className="p-4 w-full">
+                  <span className="text-[10px] sm:text-xs text-[#8c52ff] mb-1 block">{viz.category}</span>
+                  <span className="text-sm sm:text-base text-white font-medium">{viz.title}</span>
                 </div>
               </div>
-            );
-          })}
+
+              {/* Zoom icon */}
+              <div className="absolute top-3 right-3 w-8 h-8 bg-[#8c52ff]/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <ZoomIn className="w-4 h-4 text-white" />
+              </div>
+
+              {/* Corner Accent */}
+              <div className="absolute top-0 left-0 w-8 h-8 overflow-hidden">
+                <div className="absolute top-0 left-0 w-px h-4 bg-[#8c52ff]/50 group-hover:h-6 transition-all" />
+                <div className="absolute top-0 left-0 h-px w-4 bg-[#8c52ff]/50 group-hover:w-6 transition-all" />
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
       {/* Lightbox */}
       {selectedImage !== null && (
         <div
-          className="fixed inset-0 bg-[#0a0e27]/95 backdrop-blur-md z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-[#0a0e27]/98 backdrop-blur-md z-50 flex items-center justify-center p-4"
           onClick={closeLightbox}
         >
           <button
@@ -178,7 +145,7 @@ const Visualizations = () => {
               <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </button>
           )}
-          {selectedImage < filteredVisualizations.length - 1 && (
+          {selectedImage < visualizationsData.length - 1 && (
             <button
               onClick={(e) => { e.stopPropagation(); navigateLightbox(1); }}
               className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 transition-colors"
@@ -190,27 +157,30 @@ const Visualizations = () => {
 
           {/* Content */}
           <div
-            className="max-w-4xl w-full bg-[#121212] border border-[#8c52ff]/20 p-4 sm:p-6 md:p-8 mx-4"
+            className="max-w-5xl w-full bg-[#121212] border border-[#8c52ff]/20 overflow-hidden mx-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="aspect-video bg-[#0a0e27] flex items-center justify-center mb-4 sm:mb-6">
-              <div className="text-center">
-                <Image className="w-12 h-12 sm:w-16 sm:h-16 text-[#8c52ff]/50 mx-auto mb-3 sm:mb-4" />
-                <p className="text-sm sm:text-base text-[#d9d9d9]/50">Visualization Placeholder</p>
-                <p className="text-xs sm:text-sm text-[#8c52ff]/70 mt-1 sm:mt-2">Image would display here</p>
-              </div>
+            {/* Image */}
+            <div className="bg-[#0a0e27] p-2 sm:p-4">
+              <img
+                src={visualizationsData[selectedImage]?.imageUrl}
+                alt={visualizationsData[selectedImage]?.title}
+                className="w-full h-auto max-h-[70vh] object-contain"
+              />
             </div>
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            
+            {/* Info bar */}
+            <div className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-t border-[#8c52ff]/10">
               <div>
                 <span className="text-[10px] sm:text-xs text-[#8c52ff] mb-0.5 sm:mb-1 block">
-                  {filteredVisualizations[selectedImage]?.category}
+                  {visualizationsData[selectedImage]?.category}
                 </span>
                 <h3 className="text-base sm:text-lg md:text-xl font-bold text-white">
-                  {filteredVisualizations[selectedImage]?.title}
+                  {visualizationsData[selectedImage]?.title}
                 </h3>
               </div>
               <div className="text-xs sm:text-sm text-[#d9d9d9]/50">
-                {selectedImage + 1} / {filteredVisualizations.length}
+                {selectedImage + 1} / {visualizationsData.length}
               </div>
             </div>
           </div>
