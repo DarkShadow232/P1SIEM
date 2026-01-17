@@ -53,7 +53,7 @@ const TechStack = () => {
     <section
       id="tech-stack"
       ref={sectionRef}
-      className="relative py-24 md:py-32 bg-[#121212] overflow-hidden"
+      className="relative py-16 sm:py-20 md:py-24 lg:py-32 bg-[#121212] overflow-hidden"
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
@@ -61,60 +61,60 @@ const TechStack = () => {
           className="w-full h-full"
           style={{
             backgroundImage: `radial-gradient(circle at 2px 2px, #8c52ff 1px, transparent 0)`,
-            backgroundSize: '32px 32px'
+            backgroundSize: '24px 24px'
           }}
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div
-          className={`text-center mb-16 transition-all duration-700 ${
+          className={`text-center mb-10 sm:mb-12 md:mb-16 transition-all duration-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <span className="inline-block px-4 py-1.5 bg-[#8c52ff]/10 border border-[#8c52ff]/30 text-[#8c52ff] text-sm font-medium mb-4">
+          <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-[#8c52ff]/10 border border-[#8c52ff]/30 text-[#8c52ff] text-xs sm:text-sm font-medium mb-3 sm:mb-4">
             Tech Stack
           </span>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 px-2">
             Built With Modern Technologies
           </h2>
-          <p className="text-lg text-[#d9d9d9]/70 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base md:text-lg text-[#d9d9d9]/70 max-w-2xl mx-auto px-4">
             Enterprise-grade tools and frameworks powering our security solution
           </p>
         </div>
 
         {/* Tech Categories */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
           {categories.map((category, catIndex) => (
             <div
               key={category.key}
-              className={`p-6 bg-[#0a0e27] border border-[#8c52ff]/10 hover:border-[#8c52ff]/30 transition-all duration-700 ${
+              className={`p-4 sm:p-5 md:p-6 bg-[#0a0e27] border border-[#8c52ff]/10 hover:border-[#8c52ff]/30 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`}
               style={{ transitionDelay: `${catIndex * 150}ms` }}
             >
               {/* Category Header */}
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5 md:mb-6">
                 <div
-                  className="w-1 h-8"
+                  className="w-1 h-6 sm:h-8"
                   style={{ backgroundColor: category.color }}
                 />
-                <h3 className="text-lg font-bold text-white">{category.title}</h3>
+                <h3 className="text-sm sm:text-base md:text-lg font-bold text-white">{category.title}</h3>
               </div>
 
               {/* Tech Items */}
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 {techStackData[category.key]?.map((tech, index) => {
                   const Icon = iconMap[tech.icon] || Code;
 
                   return (
                     <div
                       key={index}
-                      className="group flex items-center gap-2 px-4 py-2 bg-[#121212] border border-[#8c52ff]/10 hover:border-[#8c52ff]/40 transition-all duration-300 hover:-translate-y-1"
+                      className="group flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 bg-[#121212] border border-[#8c52ff]/10 hover:border-[#8c52ff]/40 transition-all duration-300 hover:-translate-y-1"
                     >
-                      <Icon className="w-4 h-4 text-[#8c52ff]/70 group-hover:text-[#8c52ff] transition-colors" />
-                      <span className="text-sm text-[#d9d9d9]/80 group-hover:text-white transition-colors">
+                      <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#8c52ff]/70 group-hover:text-[#8c52ff] transition-colors flex-shrink-0" />
+                      <span className="text-xs sm:text-sm text-[#d9d9d9]/80 group-hover:text-white transition-colors whitespace-nowrap">
                         {tech.name}
                       </span>
                     </div>
@@ -127,11 +127,11 @@ const TechStack = () => {
 
         {/* Bottom Banner */}
         <div
-          className={`mt-12 p-8 bg-gradient-to-r from-[#4d238b]/20 via-[#0a0e27] to-[#8c52ff]/20 border border-[#8c52ff]/20 text-center transition-all duration-700 delay-500 ${
+          className={`mt-8 sm:mt-10 md:mt-12 p-4 sm:p-6 md:p-8 bg-gradient-to-r from-[#4d238b]/20 via-[#0a0e27] to-[#8c52ff]/20 border border-[#8c52ff]/20 text-center transition-all duration-700 delay-500 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}
         >
-          <p className="text-[#d9d9d9]/80">
+          <p className="text-sm sm:text-base text-[#d9d9d9]/80">
             All components are{' '}
             <span className="text-[#8c52ff] font-semibold">production-ready</span>{' '}
             and designed for{' '}
