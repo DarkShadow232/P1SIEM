@@ -51,9 +51,8 @@ const Footer = () => {
             <h4 className="text-sm sm:text-base text-white font-semibold mb-3 sm:mb-4">Resources</h4>
             <ul className="space-y-2 sm:space-y-3">
               {[
-                { name: 'Documentation', url: 'https://qms-docs.netlify.app' },
-                { name: 'GitHub Repository', url: '#' },
-                { name: 'Live Demo', url: '#' },
+                { name: 'Documentation', url: 'https://qms.sut.edu.eg/web/projects/view/117' },
+                { name: 'Live Demo', url: 'https://drive.google.com/file/d/1cYbipM4TDjMiBVwnWtOiV1lphqofg9Ht/view?usp=sharing' },
                 { name: 'API Reference', url: '#' }
               ].map((item, index) => (
                 <li key={index}>
